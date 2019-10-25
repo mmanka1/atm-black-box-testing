@@ -14,7 +14,7 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class TransferFeesCalculator {
 	
-	@Parameters
+	@Parameters(name = "TC:{index}")
 	public static Collection<Object[]> data(){
 		return Arrays.asList(new Object[][] {
 			{true,  5000,  50000,  50000,  0.001f},
