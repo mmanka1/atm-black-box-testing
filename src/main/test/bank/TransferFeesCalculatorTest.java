@@ -12,7 +12,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class TransferFeesCalculator {
+public class TransferFeesCalculatorTest {
 	
 	@Parameters(name = "TC:{index}")
 	public static Collection<Object[]> data(){
@@ -36,7 +36,7 @@ public class TransferFeesCalculator {
 	
 	private static FeesCalculator tester;
 	
-	public TransferFeesCalculator(boolean student, int amount, int fromAccountBalance, int toAccountBalance, float result) {
+	public TransferFeesCalculatorTest(boolean student, int amount, int fromAccountBalance, int toAccountBalance, float result) {
 		this.student = student;
 		this.withdrawn = amount;
 		this.accountOut = fromAccountBalance;

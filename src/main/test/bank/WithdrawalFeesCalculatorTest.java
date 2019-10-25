@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RunWith(Parameterized.class)
-public class WithdrawalFeesCalculator {
+public class WithdrawalFeesCalculatorTest {
     private FeesCalculator withdrawalFee;
     private static int amount = 800;
     private int accountBalance;
@@ -30,7 +30,7 @@ public class WithdrawalFeesCalculator {
     /**
      * Class Constructor
      */
-    public WithdrawalFeesCalculator(int balance, boolean student, String dayOfWeekName, float expectedFeeRate) {
+    public WithdrawalFeesCalculatorTest(int balance, boolean student, String dayOfWeekName, float expectedFeeRate) {
         this.accountBalance = balance;
         this.student = student;
         this.dayOfWeek = daysToInts.get(dayOfWeekName);
