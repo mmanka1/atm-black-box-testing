@@ -38,7 +38,7 @@ public class WithdrawalFeesCalculator {
     }
 
     //Build test cases to be passed into constructor
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "TC:{index}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{ {999, true,  "Saturday", 0f}, {1000, true, "Saturday", 0f},
                 {1001,	true,	"Saturday", 0f}, {5000,	true,	"Saturday", 0f}, {9998,	true,	"Saturday", 0f},
