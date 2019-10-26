@@ -101,7 +101,7 @@ public class SessionTest {
     // Create exception rule
     @Rule
     public ExpectedException exception = ExpectedException.none();
-    
+
     @Test
     public void SessionATMTest() throws InvalidPINException, InvalidAmountException, InvalidTransactionChoiceException {
         if (this.type == Type.Pin) {
@@ -116,17 +116,12 @@ public class SessionTest {
         } else {
             if (this.type == Type.Amount) {
                 if (this.dollarAmount < 0 || this.dollarAmount > dailyLimit) {
-                    // Expected is an invalid amount exception - but nominal pin is invalid,
-                    // so for this case, since want to assume one single fault based on the amount
-                    // in this case, so assume pin valid, such that the below expectation passes when
-                    // there is an InvalidPINException
-                    exception.expect(CoreMatchers.anyOf(CoreMatchers.instanceOf(InvalidPINException.class), CoreMatchers.instanceOf(InvalidAmountException.class)));
+                    // Expected is an invalid amount exception
+                    exception.expect(InvalidAmountException.class);
                     session.performSession();
                 } else {
                     if (this.dollarAmount >= 0 && this.dollarAmount <= dailyLimit) {
-                        // Expected to have no invalid amount exception - also consider invalidPINException for
-                        // the same reason as above
-                        exception.expect(CoreMatchers.anyOf(CoreMatchers.instanceOf(InvalidPINException.class)));
+                        // Expected to have no invalid amount exception
                         session.performSession();
                     }
                 }
