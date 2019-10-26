@@ -101,8 +101,7 @@ public class SessionTest {
     // Create exception rule
     @Rule
     public ExpectedException exception = ExpectedException.none();
-
-    // One test function for each single fault
+    
     @Test
     public void SessionATMTest() throws InvalidPINException, InvalidAmountException, InvalidTransactionChoiceException {
         if (this.type == Type.Pin) {
