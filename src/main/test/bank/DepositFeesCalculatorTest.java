@@ -15,7 +15,7 @@ public class DepositFeesCalculatorTest {
     @Parameterized.Parameters(name = "TC:{index}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
-                { 15000, 200000, true, 0.01f }, { 15000, 10000, true, 0.005f }, { 100, 700000, true, 0.005f }, { 100, 200000, true, 0f },
+                { 15000, 200000, true, 0.01f }, { 15000, 10000, true, 0.005f }, { 1000, 700000, true, 0.005f }, { 1000, 200000, true, 0f },
                 { 70000, 700000, false, 0.01f }, { 70000, 200000, false, 0.005f }, { 15000, 2000000, false, 0.005f }, { 15000, 700000, false, 0f }
         });
     }
