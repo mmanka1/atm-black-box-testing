@@ -45,7 +45,8 @@ public class WithdrawalFeesCalculatorTest {
                 /*TC0*/ {true, "Saturday", 5000, 0f},
                 /*TC1*/ {true, "Monday", 5000, 0.001f},
                 /*TC2*/ {false, "Saturday", 5000, 0.001f},
-                /*TC3*/ {false, "Saturday", 2000000, 0f},
+                /*TC3*/ {false, "Saturday", 200000, 0f},
+                /*TC4*/ {false, "Saturday", 2000000, 0f},
         });
     }
 
