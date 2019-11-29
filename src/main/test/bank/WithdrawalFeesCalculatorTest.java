@@ -15,7 +15,7 @@ import java.util.Map;
 @RunWith(Parameterized.class)
 public class WithdrawalFeesCalculatorTest {
     private FeesCalculator withdrawalFee;
-    private static int amount = 800;
+    private static int amount = 1000;
     private int accountBalance;
     private boolean student;
     private int dayOfWeek;
@@ -30,7 +30,7 @@ public class WithdrawalFeesCalculatorTest {
     /**
      * Class Constructor
      */
-    public WithdrawalFeesCalculatorTest(int balance, boolean student, String dayOfWeekName, float expectedFeeRate) {
+    public WithdrawalFeesCalculatorTest(boolean student, String dayOfWeekName, int balance, float expectedFeeRate) {
         this.accountBalance = balance;
         this.student = student;
         this.dayOfWeek = daysToInts.get(dayOfWeekName);
@@ -40,21 +40,13 @@ public class WithdrawalFeesCalculatorTest {
     //Build test cases to be passed into constructor
     @Parameterized.Parameters(name = "TC:{index}")
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][]{ {999, true,  "Saturday", 0f}, {1000, true, "Saturday", 0f},
-                {1001,	true,	"Saturday", 0f}, {5000,	true,	"Saturday", 0f}, {9998,	true,	"Saturday", 0f},
-                {9999,	true,	"Saturday", 0f}, {10000,	true,	"Saturday", 0f}, {999,	false,	"Saturday", 0.002f},
-                {1000,	false,	"Saturday", 0.001f}, {1001,	false,	"Saturday", 0.001f}, {5000,	false,	"Saturday", 0.001f},
-                {9998,	false,	"Saturday", 0.001f}, {9999,	false,	"Saturday", 0.001f}, {10000,	false,	"Saturday", 0f},
-                {999,	true,	"Sunday", 0f}, {1000,	true,	"Sunday", 0f}, {1001,	true,	"Sunday", 0f},
-                {5000,	true,	"Sunday", 0f}, {9998,	true,	"Sunday",0f}, {9999,	true,	"Sunday", 0f},
-                {10000,	true,	"Sunday", 0f}, {999,	false,	"Sunday", 0.002f}, {1000,	false,	"Sunday", 0.001f},
-                {1001,	false,	"Sunday", 0.001f}, {5000,	false,	"Sunday", 0.001f}, {9998,	false,	"Sunday", 0.001f},
-                {9999,	false,	"Sunday", 0.001f}, {10000,	false,	"Sunday", 0f}, {999,	true,	"Monday", 0.001f},
-                {1000,	true,	"Monday", 0.001f}, {1001,	true,	"Monday", 0.001f}, {5000,	true,	"Monday", 0.001f},
-                {9998,	true,	"Monday", 0.001f}, {9999,	true,	"Monday", 0.001f}, {10000,	true,	"Monday", 0.001f},
-                {999,	false,	"Monday", 0.002f}, {1000,	false,	"Monday", 0.001f}, {1001,	false,	"Monday", 0.001f},
-                {5000,	false,	"Monday", 0.001f}, {9998,	false,	"Monday", 0.001f}, {9999,	false,	"Monday", 0.001f},
-                {10000,	false,	"Monday", 0f}
+        return Arrays.asList(new Object[][]{
+                /*Test Case Format: <account Balance, student, dayOfWeek, expectedFee>
+                /*TC0*/ {true, "Saturday", 5000, 0f},
+                /*TC1*/ {true, "Monday", 5000, 0.001f},
+                /*TC2*/ {false, "Saturday", 5000, 0.001f},
+                /*TC3*/ {false, "Saturday", 200000, 0f},
+                /*TC4*/ {false, "Saturday", 2000000, 0f},
         });
     }
 
